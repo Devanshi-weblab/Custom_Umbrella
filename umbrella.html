@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+  <title>Custom Umbrella</title>
+  <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="new_image">
+        <div class="parent">
+          <img class="image1" id="img1" src="/images/blue_umbrella.png" alt="blue_umbrella"/>
+          <img class="image2" id="logoImage" />
+         
+        </div>
+    
+
+        <div>
+        </div>
+      </div>
+      <div class="new_image">
+        <h1>Custom Umbrella</h1>
+        <div>
+        <button class="b1" color="" onclick="changeImage1()"></button>
+        <button class="b2" onclick="changeImage2()"></button>
+        <button class="b3" onclick="changeImage3()"></button>
+        </div>
+          <h3>Customise Your Umbrella</h3>
+          <h4>Upload a Logo For an Instant Preview.</h4>
+          <h6>.png and .jpg files only.Max file size is 5 MB.</h6>
+      <div class="uploadButton">
+          <label for="files" class="btn"><img class="arrowIcon" src="upload_icon.svg"/><span class="uploadText">UPLOAD LOGO</span></label>
+          <input id="files" style="visibility:hidden;" type="file" accept=".jpg,.png" onchange="replaceImage()"/>
+      </div>
+      </div>
+    </div>
+<script type="text/javascript">
+  function changeImage1(){
+            document.querySelector('.image1').src="/images/blue_umbrella.png";
+            document.querySelector('.container').style.backgroundColor ='#ADD8E6';
+            document.querySelector('.uploadButton').style.backgroundColor ="rgb(48, 145, 255)";
+  }
+  function changeImage2(){
+            document.querySelector('.image1').src="/images/pink_umbrella.png";
+            document.querySelector('.container').style.backgroundColor ='#FFB6C1';
+            document.querySelector('.uploadButton').style.backgroundColor =	'#FF69B4';
+  }
+  function changeImage3(){
+            document.querySelector('.image1').src="/images/yello_umbrella.png";
+            document.querySelector('.container').style.backgroundColor ='	#FFFFE0';
+            document.querySelector('.uploadButton').style.backgroundColor = '#FFFF00' ;
+  }
+  function replaceImage(){ 
+   var file = document.getElementById('files').files[0];
+  //  console.log("replacingImage",file);
+  if(file.size>5000000){
+    alert("Please select file less than 5MB")
+  }
+  else{
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.querySelector('#logoImage').src=e.target.result;
+      document.querySelector('#logoImage').style.display="block";
+    }
+reader.readAsDataURL(file);
+  }
+  
+
+ 
+  }
+
+</script>
+</body>
+</html>
